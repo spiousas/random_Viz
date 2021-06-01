@@ -1,10 +1,8 @@
 library(rvest)
 library(tidyverse)
-library(ggbump)
 library(ggflags)
 library(countrycode)
 library(janitor)
-library(paletteer)
 library(ggtext)
 library(extrafonts)
 library(colorspace)
@@ -55,9 +53,13 @@ lines <- tibble(year = rep(data_total %>% filter(tournament %in% Tournament_id) 
 fig.CAm <- data_total %>% filter(tournament %in% Tournament_id) %>%
   ggplot(aes(x = year, 
              y = rank)) +
+  geom_line(data = lines, aes(group = year),
+            color = lighten(col,
+                            amount = 0.7),
+            size = 8) +
   annotate("rect", 
-           xmin = 1970, 
-           xmax = 2020, 
+           xmin = 1970.5, 
+           xmax = 2020.5, 
            ymin = c(0.6,1.6, 2.6), 
            ymax = c(1.4, 2.4, 3.4), 
            alpha = 0.4, 
@@ -67,25 +69,17 @@ fig.CAm <- data_total %>% filter(tournament %in% Tournament_id) %>%
            x = 1974, 
            y = 1:4, 
            label = c("Campeón", "Subcampeón", "Tercero", "Cuarto"),
-           color = c(darken(medals, amount = 0.7), col),
+           color = c(darken(medals, 
+                            amount = 0.6), 
+                     col),
            hjust = 1) +
-  geom_line(data = lines, aes(group = year),
-            color = lighten(col,
-                            amount = 0.6),
-            size = 1,
-            linetype = "dotted") +
-  geom_bump(aes(group = country, 
-                color = country),
-            smooth =10, 
-            size = 1.5, 
-            lineend = "round") +
   geom_flag(aes(country = country_id),
             size = 8) +
   geom_label(data = data_total %>% filter(tournament %in% Tournament_id & is_host==1),
              label = "Anfitrión",
              family = "JetBrains Mono",
-             size = 3, 
-             nudge_y = 0.27,
+             size = 2.5, 
+             nudge_y = 0.28,
              color = "black",
              fill = "gray80",
              fontface = "bold") +
@@ -98,10 +92,10 @@ fig.CAm <- data_total %>% filter(tournament %in% Tournament_id) %>%
   labs(title = "Cuatro primeros puestos de la **Copa América** a lo largo de los años<br>",
        caption = "<br/>**Source:** Wikipedia | **Viz:** @spiousas") +
   theme(legend.position = "none",
-        plot.margin = unit(c(.2,.2,.2,.2), "cm"),
-        plot.title = element_markdown(color = col),
+        plot.margin = unit(c(.2,.24,.2,.24), "cm"),
+        plot.title = element_markdown(color = col,
+                                      hjust = 0.5),
         plot.title.position = "panel",
-        plot.subtitle = element_markdown(color = col),
         plot.caption = element_markdown(color = col),
         plot.caption.position = "plot",
         axis.text.x = element_markdown(size = 8, 
@@ -113,4 +107,4 @@ fig.CAm <- data_total %>% filter(tournament %in% Tournament_id) %>%
                                 colour = NA))
 fig.CAm
 
-ggsave("./Covid_vaccines/output/vaccine_GDP.png", dpi = 300, width = 22, height = 18, units = "cm")
+ggsave("./Copa_America/historico/output/copa_america_historico.png", dpi = 300, width = 36, height = 10, units = "cm")
