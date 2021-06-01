@@ -1,2 +1,12 @@
-# random_Viz
-Random data viz project by Ignacio Spiousas (@spiousas).
+Wellcome!
+================
+@spiousas
+
+``` r
+# All defaults
+#imgCA <- readPNG("./Copa_America/historico/output/copa_america_historico.png", native = TRUE, info = TRUE)
+include_graphics("./Copa_America/historico/output/copa_america_historico.png")
+```
+
+<img src="./Copa_America/historico/output/copa_america_historico.png" width="100%" />
+Hi!
