@@ -107,4 +107,4 @@ fig.CAm <- data_total %>% filter(tournament %in% Tournament_id) %>%
                                 colour = NA))
 fig.CAm
 
-ggsave("./Copa_America/historico/output/copa_america_historico.png", dpi = 300, width = 36, height = 10, units = "cm")
+ggsave("./Copa_America/historico/output/copa_america_historico.png", dpi = 600, width = 36, height = 10, units = "cm")
