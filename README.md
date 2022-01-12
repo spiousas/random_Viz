@@ -34,3 +34,10 @@ Winners of the Copa América soccer tournament.
 <img src="./Copa_America/historico/output/copa_america_historico.png" width="100%" />
 [Code
 here](https://github.com/spiousas/random_Viz/blob/main/Copa_America/historico/copa_america_historico.R)
+
+## Spiral-19 Argentina
+
+Covid-19 cases and deaths in Argentina in the shape of the (in)famous
+NYT spiral plot.
+<img src="./Spiral-19/output/spiral_arg.png" width="100%" /> [Code
+here](https://github.com/spiousas/random_Viz/blob/main/Spiral-19/spiral_arg.R)
