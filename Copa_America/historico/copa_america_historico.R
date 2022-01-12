@@ -4,8 +4,9 @@ library(ggflags)
 library(countrycode)
 library(janitor)
 library(ggtext)
-library(extrafonts)
+library(extrafont)
 library(colorspace)
+library(paletteer)
 
 wiki <- "https://en.wikipedia.org/wiki/Copa_América"
 
@@ -16,6 +17,8 @@ data_CSera = wiki %>%
   html_node(xpath = '//*[@id="mw-content-text"]/div[1]/table[5]') %>%
   html_table(fill = TRUE) %>%
   clean_names() %>%
+  rename("score_2" = "score",
+         "score" = "score_and_venue") %>%
   mutate(tournament = "Campeonato Sudamericano")
 
 data_CAera = wiki %>%
@@ -25,14 +28,16 @@ data_CAera = wiki %>%
   clean_names() %>%
   mutate(tournament = "Copa América")
 
-data_total <- rbind(data_CSera, data_CAera) %>%
+#data_total <- rbind(data_CSera, data_CAera) %>%
+# Solo copa América
+data_total <- data_CAera %>%
   select(!starts_with("x") & !starts_with("score")) %>%
   pivot_longer(
     cols = c("winners", "runners_up", "third_place", "fourth_place"),
     names_to = "rank",
     values_to = "country",
     values_drop_na = TRUE) %>%
-  filter(year<2020) %>%
+  filter(year<2022) %>%
   mutate(year = parse_number(year),
          rank = as.numeric(recode(rank, !!!rank_coding)),
          is_host = if_else(country==hosts, 1, 0),
@@ -59,7 +64,7 @@ fig.CAm <- data_total %>% filter(tournament %in% Tournament_id) %>%
             size = 8) +
   annotate("rect", 
            xmin = 1970.5, 
-           xmax = 2020.5, 
+           xmax = 2022.5, 
            ymin = c(0.6,1.6, 2.6), 
            ymax = c(1.4, 2.4, 3.4), 
            alpha = 0.4, 
@@ -107,4 +112,4 @@ fig.CAm <- data_total %>% filter(tournament %in% Tournament_id) %>%
                                 colour = NA))
 fig.CAm
 
-ggsave("./Copa_America/historico/output/copa_america_historico.png", dpi = 600, width = 36, height = 10, units = "cm")
+ggsave("./Copa_America/historico/output/copa_america_historico.png", dpi = 600, width = 37, height = 10, units = "cm")

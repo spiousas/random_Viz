@@ -1,6 +1,5 @@
 library(tidyverse)
 library(ggalluvial)
-library(ggthemes)
 library(janitor)
 library(ggtext)
 library(extrafont)
@@ -34,10 +33,10 @@ read_delim("./Conicet/data/Personal_por_categoria.csv", delim = ";") %>%
               size = c(4, 4, 3, 3, 3, 3, 3))+
     theme_void(base_family = "JetBrains Mono") +
     labs(title = "Género y categoría de lxs investigadorxs de **Conicet**",
-         subtitle = "<br>La composición de la planta de investigadorxs de Conicet cuenta con más mujeres (**5905**) que hombres (**5102**). <br>
+         subtitle = "<br>La composición de la planta de investigadorxs de Conicet cuenta con más mujeres (**5905**) que hombres (**5102**).<br>
          Sin embargo, este desbalanceo no se replica en todas las catergorías, estando sobrerepresentados los hombres en <br>
-         las categorías de Inv. Principal (707 hombres vs. 511 mujeres) y Superior (161 hombres vs. 54 mujeres).",
-         caption = "**Source:** Base de Datos del CONICET | **Viz:** @spiousas<br/>") +
+         las categorías de Inv. Independiente (**1385** hombres vs. **1352** mujeres), Principal (**707** hombres vs. **511** mujeres) y<br>Superior (**161** hombres vs. **54** mujeres).",
+         caption = "**Fuente:** Base de Datos del CONICET | **Viz:** @spiousas<br/>") +
     scale_fill_brewer(palette = "Set2", 
                       direction = -1) +
     theme(panel.background = element_rect(fill = "gray30", color = NA),
@@ -52,4 +51,3 @@ read_delim("./Conicet/data/Personal_por_categoria.csv", delim = ";") %>%
           )
 
 ggsave("./Conicet/output//investConicet.png", dpi = 300, width = 27, height = 20, units = "cm")
-

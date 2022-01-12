@@ -63,8 +63,8 @@ include_graphics("./Copa_America/historico/output/copa_america_historico.png")
 
 Covid-19 cases and deaths in Argentina in the shape of the (in)famous NYT spiral plot.
 ```{r, echo = FALSE}
-include_graphics("./Spiral-19/output/spiral_arg.png")
+include_graphics("./Spiral-19/output/spiral_arg_colorblind.png")
 ```
-[Code here](https://github.com/spiousas/random_Viz/blob/main/Spiral-19/spiral_arg.R)
+[Code here](https://github.com/spiousas/random_Viz/blob/main/Spiral-19/spiral_arg_colorblind.R)
 
 

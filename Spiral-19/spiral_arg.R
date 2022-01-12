@@ -4,7 +4,7 @@ pacman::p_load("tidyverse", "ggtext", "here", "lubridate", "pracma", "colorspace
 owid_url <- "https://github.com/owid/covid-19-data/blob/master/public/data/owid-covid-data.csv?raw=true"
 covid <- read_csv(owid_url)
 country <- "Argentina"
- <- covid %>% 
+covid_cases <- covid %>% 
   filter(location == country) %>% 
   select(date, new_cases, new_cases_smoothed, new_deaths, new_deaths_smoothed) %>% 
   arrange(date) %>% 

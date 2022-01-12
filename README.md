@@ -39,5 +39,6 @@ here](https://github.com/spiousas/random_Viz/blob/main/Copa_America/historico/co
 
 Covid-19 cases and deaths in Argentina in the shape of the (in)famous
 NYT spiral plot.
-<img src="./Spiral-19/output/spiral_arg.png" width="100%" /> [Code
-here](https://github.com/spiousas/random_Viz/blob/main/Spiral-19/spiral_arg.R)
+<img src="./Spiral-19/output/spiral_arg_colorblind.png" width="100%" />
+[Code
+here](https://github.com/spiousas/random_Viz/blob/main/Spiral-19/spiral_arg_colorblind.R)
