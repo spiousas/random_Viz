@@ -4,7 +4,7 @@ pacman::p_load("tidyverse", "ggtext", "here", "lubridate", "pracma", "colorspace
 owid_url <- "https://github.com/owid/covid-19-data/blob/master/public/data/owid-covid-data.csv?raw=true"
 covid <- read_csv(owid_url)
 country <- "Argentina"
-covid_cases <- covid %>% 
+ <- covid %>% 
   filter(location == country) %>% 
   select(date, new_cases, new_cases_smoothed, new_deaths, new_deaths_smoothed) %>% 
   arrange(date) %>% 
@@ -87,7 +87,7 @@ p <- covid_cases %>%
   scale_y_continuous(limits = c(as.POSIXct("2019-07-01"), NA),
                      expand = c(0, 0)) +
   labs(caption = "**Fuente:** Our World in Data | **Viz:** @spiousas<br/>") +
-  coord_polar() +
+  #coord_polar() +
   theme_void() +
   theme(
     plot.background = element_rect(color = NA, fill = "white"),
@@ -112,7 +112,7 @@ p_legend <-
   geom_line(aes(y = 1), color = base_grey) +
   geom_text(label = 0, y = 0, x = -10000, size = 2.5, hjust = 1, vjust = .5) +
   geom_text(label = "100k casos", y = size_factor_cases * 50000/2, x = 210000, size = 2.5, hjust = 0, vjust = .5) +
-  geom_text(label = "10k muertes", y = size_factor_deaths * (-500)/2, x = 210000, size = 2.5, hjust = 0, vjust = .5) +
+  geom_text(label = "1k muertes", y = size_factor_deaths * (-500)/2, x = 210000, size = 2.5, hjust = 0, vjust = .5) +
   coord_cartesian(xlim = c(-.5e5, 3e5), 
                   ylim = c(-as.numeric(as.POSIXct("1971-01-01")), NA), 
                   clip = "off") + 

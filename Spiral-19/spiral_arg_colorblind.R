@@ -86,7 +86,7 @@ p <- covid_cases %>%
   ) +
   scale_y_continuous(limits = c(as.POSIXct("2019-07-01"), NA),
                      expand = c(0, 0)) +
-  labs(caption = "**Fuente:** Our World in Data | **Viz:** @spiousas<br/>") +
+  labs(caption = "**Fuente:** Our World in Data | **Viz:** @spiousas based on @_ansgar") +
   coord_polar() +
   theme_void() +
   theme(
@@ -112,7 +112,7 @@ p_legend <-
   geom_line(aes(y = 1), color = base_grey) +
   geom_text(label = 0, y = 0, x = -10000, size = 2.5, hjust = 1, vjust = .5) +
   geom_text(label = "100k casos", y = size_factor_cases * 50000/2, x = 210000, size = 2.5, hjust = 0, vjust = .5) +
-  geom_text(label = "10k muertes", y = size_factor_deaths * (-500)/2, x = 210000, size = 2.5, hjust = 0, vjust = .5) +
+  geom_text(label = "1k muertes", y = size_factor_deaths * (-500)/2, x = 210000, size = 2.5, hjust = 0, vjust = .5) +
   coord_cartesian(xlim = c(-.5e5, 3e5), 
                   ylim = c(-as.numeric(as.POSIXct("1971-01-01")), NA), 
                   clip = "off") + 
@@ -127,5 +127,5 @@ p_legend <-
 p + inset_element(p_legend, left = 0.05, bottom = 0.725, right = 0.25, top = 0.95)
 
 # Save
-ggsave(here("spiral-19", "output", "spiral_arg_colorblind.png"), width = 15, height = 15 , units = "cm")
+ggsave(here("spiral-19", "output", "spiral_arg_colorblind.png"), width = 15, height = 15 , units = "cm", dpi = 600)
 
