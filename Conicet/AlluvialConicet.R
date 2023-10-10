@@ -1,10 +1,6 @@
-library(tidyverse)
-library(ggalluvial)
-library(janitor)
-library(ggtext)
-library(extrafont)
+pacman::p_load(tidyverse, ggalluvial, janitor, ggtext, extrafont, here)
 
-read_delim("./Conicet/data/Personal_por_categoria.csv", delim = ";") %>%
+read_delim(here("Conicet/data/Personal_por_categoria.csv"), delim = ";") %>%
   clean_names() %>%
   group_by(genero, categoria) %>%
   summarise(n = n()) %>%
